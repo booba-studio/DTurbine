@@ -1,0 +1,7 @@
+a simple demo for live data, kotlin coroutine, databinding, retrofit2 and jetpack MVVM architecture
+There are two screens:
+
+    1. Main Activity showing a list of Ad campaigns - retrofit2, livedata, MVVM
+    2. Campaign detail screen - databinding and viewmodel coroutine scope
+
+    for visual detail, see screenshots
