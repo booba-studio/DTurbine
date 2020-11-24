@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="c"
+            type="com.booba.digitalturbine.model.Campaigns" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+>
+
+            <TextView
+                android:id="@+id/productName"
+                android:textStyle="bold"
+                android:textColor="#118811"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:visibility="@{c.productName==null ? View.GONE : View.VISIBLE}"
+                android:text="@{`productName: `+c.productName}"
+                app:layout_constraintTop_toTopOf="parent" />
+            <View
+                android:id="@+id/hr1"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/productName"
+                android:layout_height="1dp"
+                android:layout_margin="4dp"
+                android:background="#222444"/>
+
+            <ImageView
+                android:id="@+id/productThumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_marginTop="136dp"
+                android:elevation="4dp"
+                android:foregroundGravity="center"
+                android:scaleType="center"
+                app:cardCornerRadius="2dp"
+                android:visibility="@{c.productThumbnail==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hr1"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:visibility="@{c.rating==null ? View.GONE : View.VISIBLE}"
+                android:text="@{`rating: `+String.valueOf(c.rating)}"
+                android:textColor="@android:color/holo_red_dark"
+                app:layout_constraintTop_toBottomOf="@id/numberOfDownloads" />
+
+            <View
+                android:id="@+id/hr2"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/rating"
+                android:layout_height="1dp"
+                android:layout_margin="4dp"
+                android:background="#222444"/>
+            <TextView
+                android:id="@+id/numberOfDownloads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`numberOfDownloads: `+c.numberOfDownloads}"
+                android:visibility="@{c.numberOfDownloads==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/productThumbnail" />
+
+            <TextView
+                android:id="@+id/productDescription"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="@id/productThumbnail"
+                app:layout_constraintStart_toEndOf="@id/productThumbnail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{ `productDescription: \n`+c.productDescription }"
+                android:visibility="@{c.productDescription==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/hr1" />
+
+            <TextView
+                android:id="@+id/apks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`apks: `+c.apks}"
+                android:visibility="@{c.apks==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/productDescription" />
+
+            <TextView
+                android:id="@+id/appId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`appId: `+c.appId}"
+                android:visibility="@{c.appId==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/hr2" />
+
+            <TextView
+                android:id="@+id/appPrivacyPolicyUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`appPrivacyPolicyUrl: `+c.appPrivacyPolicyUrl}"
+                android:visibility="@{c.appPrivacyPolicyUrl==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/campaignDisplayOrder" />
+
+            <ImageView
+                android:id="@+id/averageRatingImageURL"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:visibility="@{c.averageRatingImageURL==null ? View.GONE : View.VISIBLE}"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toEndOf="@id/rating"
+                app:layout_constraintTop_toBottomOf="@id/numberOfDownloads" />
+
+            <TextView
+                android:id="@+id/bidRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`bidRate: `+String.valueOf(c.bidRate)}"
+                android:visibility="@{c.bidRate==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/appId" />
+
+            <TextView
+                android:id="@+id/billingTypeId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`billingTypeId: `+String.valueOf(c.billingTypeId)}"
+                android:visibility="@{c.billingTypeId==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/bidRate" />
+
+            <TextView
+                android:id="@+id/callToAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`callToAction: `+c.callToAction}"
+                android:visibility="@{c.callToAction==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/stiEnabled" />
+
+            <TextView
+                android:id="@+id/campaignId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:visibility="@{c.campaignId==null ? View.GONE : View.VISIBLE}"
+
+                android:text="@{`campaignId: `+String.valueOf(c.campaignId)}"
+                app:layout_constraintTop_toBottomOf="@id/callToAction" />
+
+            <TextView
+                android:id="@+id/campaignTypeId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:visibility="@{c.campaignTypeId==null ? View.GONE : View.VISIBLE}"
+                android:text="@{`campaignTypeId: `+String.valueOf(c.campaignTypeId)}"
+                app:layout_constraintTop_toBottomOf="@id/campaignId" />
+
+            <TextView
+                android:id="@+id/carrier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`carrier: `+c.carrier}"
+                android:visibility="@{c.carrier==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/campaignTypeId" />
+
+            <TextView
+                android:id="@+id/categoryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:visibility="@{c.categoryName==null ? View.GONE : View.VISIBLE}"
+                android:text="@{`categoryName: `+c.categoryName}"
+                app:layout_constraintTop_toBottomOf="@id/carrier" />
+
+            <TextView
+                android:id="@+id/clickProxyURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`clickProxyURL: `+c.clickProxyURL}"
+                android:visibility="@{c.clickProxyURL==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/categoryName" />
+
+            <TextView
+                android:id="@+id/creativeId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`creativeId: `+String.valueOf(c.creativeId)}"
+                app:layout_constraintTop_toBottomOf="@id/clickProxyURL" />
+
+            <TextView
+                android:id="@+id/developerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:visibility="@{c.developerName==null ? View.GONE : View.VISIBLE}"
+                android:text="@{`developerName: `+c.developerName}"
+                app:layout_constraintTop_toBottomOf="@id/creativeId" />
+
+            <TextView
+                android:id="@+id/dtPrivacyPolicyUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:autoLink="phone|web"
+                android:text="@{`dtPrivacyPolicyUrl: `+c.dtPrivacyPolicyUrl}"
+                android:visibility="@{c.dtPrivacyPolicyUrl==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/developerName" />
+
+            <TextView
+                android:id="@+id/externalMetadata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`externalMetadata: `+c.externalMetadata}"
+                android:visibility="@{c.externalMetadata==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/dtPrivacyPolicyUrl" />
+
+            <TextView
+                android:id="@+id/googlePlayAppStoreUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`googlePlayAppStoreUrl: `+c.googlePlayAppStoreUrl}"
+                android:visibility="@{c.googlePlayAppStoreUrl==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/externalMetadata" />
+
+            <TextView
+                android:id="@+id/homeScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`homeScreen: `+String.valueOf(c.homeScreen)}"
+                android:visibility="@{c.homeScreen==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/googlePlayAppStoreUrl" />
+
+            <TextView
+                android:id="@+id/impressionTrackingURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`impressionTrackingURL: `+c.impressionTrackingURL}"
+                android:visibility="@{c.impressionTrackingURL==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/homeScreen" />
+
+            <TextView
+                android:id="@+id/isRandomPick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@{`isRandomPick: `+String.valueOf(c.isRandomPick)}"
+                android:visibility="@{c.isRandomPick()==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/impressionTrackingURL"
+                tools:layout_editor_absoluteX="4dp" />
+
+            <TextView
+                android:id="@+id/longDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`longDescription: `+c.longDescription}"
+                android:visibility="@{c.longDescription==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/isRandomPick" />
+
+            <TextView
+                android:id="@+id/maxOSVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`maxOSVersion: `+c.maxOSVersion}"
+                android:visibility="@{c.maxOSVersion==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/longDescription" />
+
+            <TextView
+                android:id="@+id/minOSVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`minOSVersion: `+c.minOSVersion}"
+                android:visibility="@{c.minOSVersion==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/maxOSVersion" />
+
+            <TextView
+                android:id="@+id/numberOfRatings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`numberOfRatings: `+c.numberOfRatings}"
+                android:visibility="@{c.numberOfRatings==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/minOSVersion" />
+
+            <TextView
+                android:id="@+id/mmpPartner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`mmpPartner: `+c.mmpPartner}"
+                android:visibility="@{c.mmpPartner==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/numberOfRatings" />
+
+            <TextView
+                android:id="@+id/productId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`productId: `+String.valueOf(c.productId)}"
+                android:visibility="@{c.productId==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/mmpPartner" />
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:scaleType="fitXY"
+                android:visibility="@{c.productImage==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/productId" />
+
+
+            <TextView
+                android:id="@+id/tstiEligible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`tstiEligible: `+String.valueOf(c.tstiEligible)}"
+                android:visibility="@{c.tstiEligible==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/billingTypeId" />
+
+            <TextView
+                android:id="@+id/stiEnabled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`stiEnabled: `+String.valueOf(c.stiEnabled)}"
+                android:visibility="@{c.stiEnabled==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/tstiEligible" />
+
+            <TextView
+                android:id="@+id/screenshots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`screenshots: `+c.screenshots}"
+                android:visibility="@{c.screenshots==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/productId" />
+
+            <TextView
+                android:id="@+id/postInstallActions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{`postInstallActions: `+c.postInstallActions.toString()}"
+                android:visibility="@{c.postInstallActions.size()==0 ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/screenshots" />
+
+            <TextView
+                android:id="@+id/advertiserDomainUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{ `advertiserDomainUrl: `+c.advertiserDomainUrl }"
+                android:visibility="@{c.advertiserDomainUrl==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/postInstallActions" />
+
+            <TextView
+                android:id="@+id/campaignDisplayOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@{ `campaignDisplayOrder: `+c.campaignDisplayOrder }"
+                android:visibility="@{c.campaignDisplayOrder==null ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/advertiserDomainUrl" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>
